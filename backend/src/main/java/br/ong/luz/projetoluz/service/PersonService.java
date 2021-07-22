@@ -8,14 +8,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 @Service
 public class PersonService {
     @Autowired
     private PersonRepository personRepository;
 
-    public Person create(String name) {
+    public Person create(String name, LocalDate birth) {
         Person p = new Person();
         p.setName(name);
+        p.setBirth(birth);
         Person personSaved = personRepository.save(p);
         return personSaved;
     }
